@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Map;
 
-
 @WebFilter(displayName = "DateFilter", urlPatterns = "/tms/*")
 public class DateFilter extends HttpFilter {
 
@@ -25,24 +24,19 @@ public class DateFilter extends HttpFilter {
         String user = req.getParameter("name");
         String password = req.getParameter("password");
 
-        if (!req.getRequestURI().equals("/tms"))
-            session.setAttribute("URL", req.getRequestURI());
-
-
         if (user != null && password != null && isUser(user, password)) {
             session.setAttribute("user", "user");
         }
+
+        session.setAttribute("URL", req.getRequestURI());
 
         if (session.getAttribute("user") == null) {
             ServletContext servletContext = getServletContext();
             RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/tms/log");
             requestDispatcher.forward(req, res);
-        } else {
-            ServletContext servletContext = getServletContext();
-            RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(session.getAttribute("URL").toString());
-            requestDispatcher.forward(req, res);
         }
 
+        chain.doFilter(req, res);
     }
 
     private static boolean isUser(String name, String password) {

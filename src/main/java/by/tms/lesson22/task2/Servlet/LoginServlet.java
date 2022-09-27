@@ -24,7 +24,7 @@ public class LoginServlet extends HttpServlet {
             writer.println("<html>" +
                     "<h1>Please enter your login and password:</h1>" +
                     "<body>" +
-                    "<form action=\"/tms\" method=\"GET\">" +
+                    "<form action=" + req.getSession().getAttribute("URL") + " method=\"GET\">" +
                     "<input type=\"text\" name=\"name\"><br>" +
                     "<input type=\"text\" name=\"password\"><br>" +
                     "<input type=\"submit\" value=\"Enter\"/>" +
