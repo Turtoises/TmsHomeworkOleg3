@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Course registration page</title>
+</head>
+<body style="background: blanchedalmond">
+<img src="/lesson24/task1/program.jpg" style="float: right;margin: 0 0 0 0">
+<h3 align="center"><u>Enrollment form</u></h3>
+<form action="/form/writer" method="post">
+    <fieldset>
+        <legend align="center">User date</legend>
+        First Name
+        <input type="text" required name="userfirstname" pattern="[A-Za-z]+"/>
+        <br><br>
+        Last Name
+        <input type="text" required name="userlastname" pattern="[A-Za-z]+">
+        <br><br>
+        Your language
+        <select name="userlanguage" required>
+            <option value="English">English</option>
+            <option value="French">French</option>
+            <option value="German">German</option>
+            <option value="Russian">Russian</option>
+            <option value="other">other</option>
+        </select>
+        <br><br>
+        Your gender
+        <input type="radio" name="gender" value="man" checked/>Man
+        <input type="radio" name="gender" value="woman"/>Woman
+    </fieldset>
+    <br>
+    <fieldset>
+        <legend align="center">Programming language</legend>
+        <input type="checkbox" name="courses" value="Java">Java
+        <input type="checkbox" name="courses" value="Python">Python
+        <input type="checkbox" name="courses" value="C++">C++
+        <input type="checkbox" name="courses" value="JavaScript">JavaScript
+        <input type="checkbox" name="courses" value="PHP">PHP
+    </fieldset>
+    <br><br>
+    Additional information
+    <br><br>
+    <textarea name="information" placeholder="Not more 100 symbols" maxlength="100" rows="5"></textarea>
+    <br><br>
+    Password<br>
+    <input type="password" name="password" placeholder="Not less 8 symbols" minlength="8" required/><br><br>
+    <button type="submit">Enter</button>
+    <button type="reset">Cancel</button>
+    <br><br>
+</form>
+</body>
+</html>
