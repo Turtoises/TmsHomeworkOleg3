@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<project name="Ant" default="run">
+    <!-- define names of directories -->
+    <property name="src" location="lesson30/src/java"/>
+    <property name="build" location="build"/>
+    <property name="classes" location="${build}/classes"/>
+
+    <target name="clean">
+        <delete dir="${build}"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="${classes}"/>
+        <javac srcdir="${src}" destdir="${classes}" includeantruntime="false" compiler="modern" source="17" target="17">
+            <compilerarg value="--enable-preview"/>
+        </javac>
+    </target>
+
+    <target name="run" depends="package">
+        <java classname="${ant.project.name}" classpath="${classes}"/>
+    </target>
+
+    <target name="package" depends="compile">
+        <jar destfile="${build}/${ant.project.name}.jar" basedir="${classes}" excludes="Test*.class">
+            <manifest>
+                <attribute name="Main-Class" value="${ant.project.name}"/>
+            </manifest>
+        </jar>
+    </target>
+
+</project>
