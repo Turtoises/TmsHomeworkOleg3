@@ -1,0 +1,97 @@
+[INFO ] 16:06:43.329 [main] SaveOrderAndLog - Your order has been successfully added
+[INFO ] 16:07:07.116 [main] SaveOrderAndLog - Your order has been successfully added
+[INFO ] 16:07:54.023 [main] SaveOrderAndLog - User with this number is not found
+[INFO ] 16:07:54.025 [main] SaveOrderAndLog - Your order has not been added
+[INFO ] 16:07:54.026 [main] SaveOrderAndLog - Your order has been successfully added
+[INFO ] 16:10:29.826 [main] SaveOrderAndLog - User with this number is not found
+[INFO ] 16:10:29.827 [main] SaveOrderAndLog - Your order has not been added
+[DEBUG] 16:11:14.692 [main] SaveOrderAndLog - List of items is empty
+[DEBUG] 16:15:41.382 [main] SaveOrderAndLog - List of items is empty
+[DEBUG] 16:16:18.035 [main] SaveOrderAndLog - List of items is empty
+[DEBUG] 16:18:17.431 [main] SaveOrderAndLog - List of items is empty
+[DEBUG] 16:18:55.306 [main] SaveOrderAndLog - List of items is empty
+[DEBUG] 21:07:58.271 [main] SaveOrderAndLog - List of items is empty
+[INFO ] 15:51:09.478 [main] SaveOrderAndLog - User with this number is not found
+[INFO ] 15:51:09.483 [main] SaveOrderAndLog - Your order has not been added
+[INFO ] 15:54:30.686 [main] SaveOrderAndLog - User with this number is not found
+[INFO ] 15:54:30.690 [main] SaveOrderAndLog - Your order has not been added
+[INFO ] 15:54:30.704 [main] SaveOrderAndLog - Your order has been successfully added
+[INFO ] 15:54:44.514 [main] SaveOrderAndLog - User with this number is not found
+[INFO ] 15:54:44.517 [main] SaveOrderAndLog - Your order has not been added
+[INFO ] 15:54:44.533 [main] SaveOrderAndLog - Your order has been successfully added
+[INFO ] 15:55:30.500 [main] SaveOrderAndLog - User with this number is not found
+[INFO ] 15:55:30.504 [main] SaveOrderAndLog - Your order has not been added
+[INFO ] 15:55:30.518 [main] SaveOrderAndLog - Your order has been successfully added
+[INFO ] 15:55:30.530 [main] SaveOrderAndLog - Number of items not specified
+[INFO ] 15:55:30.530 [main] SaveOrderAndLog - Your order has not been added
+[INFO ] 15:55:30.533 [main] SaveOrderAndLog - The number of items is less than zero
+[INFO ] 15:55:30.533 [main] SaveOrderAndLog - Your order has not been added
+[INFO ] 15:55:40.327 [main] SaveOrderAndLog - User with this number is not found
+[INFO ] 15:55:40.331 [main] SaveOrderAndLog - Your order has not been added
+[INFO ] 15:55:40.351 [main] SaveOrderAndLog - Your order has been successfully added
+[INFO ] 15:55:40.364 [main] SaveOrderAndLog - Number of items not specified
+[INFO ] 15:55:40.365 [main] SaveOrderAndLog - Your order has not been added
+[INFO ] 15:55:40.367 [main] SaveOrderAndLog - The number of items is less than zero
+[INFO ] 15:55:40.367 [main] SaveOrderAndLog - Your order has not been added
+[INFO ] 16:05:16.604 [main] SaveOrderAndLog - User with this number is not found
+[INFO ] 16:05:16.608 [main] SaveOrderAndLog - Your order has not been added
+[INFO ] 16:05:16.626 [main] SaveOrderAndLog - Your order has been successfully added
+[INFO ] 16:05:16.640 [main] SaveOrderAndLog - Item with this number is not found
+[INFO ] 16:05:16.640 [main] SaveOrderAndLog - Your order has not been added
+[INFO ] 16:05:16.652 [main] SaveOrderAndLog - Number of items not specified
+[INFO ] 16:05:16.652 [main] SaveOrderAndLog - Your order has not been added
+[INFO ] 16:05:16.654 [main] SaveOrderAndLog - The number of items is less than zero
+[INFO ] 16:05:16.655 [main] SaveOrderAndLog - Your order has not been added
+[INFO ] 16:05:29.283 [main] SaveOrderAndLog - User with this number is not found
+[INFO ] 16:05:29.287 [main] SaveOrderAndLog - Your order has not been added
+[INFO ] 16:05:29.305 [main] SaveOrderAndLog - Your order has been successfully added
+[INFO ] 16:05:29.319 [main] SaveOrderAndLog - Item with this number is not found
+[INFO ] 16:05:29.319 [main] SaveOrderAndLog - Your order has not been added
+[INFO ] 16:05:29.322 [main] SaveOrderAndLog - Number of items not specified
+[INFO ] 16:05:29.322 [main] SaveOrderAndLog - Your order has not been added
+[INFO ] 16:05:29.325 [main] SaveOrderAndLog - The number of items is less than zero
+[INFO ] 16:05:29.325 [main] SaveOrderAndLog - Your order has not been added
+[INFO ] 16:18:32.414 [main] SaveOrderAndLog - User with this number is not found
+[INFO ] 16:18:32.418 [main] SaveOrderAndLog - Your order has not been added
+[INFO ] 16:18:32.438 [main] SaveOrderAndLog - Your order has been successfully added
+[INFO ] 16:18:32.456 [main] SaveOrderAndLog - Item with this number is not found
+[INFO ] 16:18:32.457 [main] SaveOrderAndLog - Your order has not been added
+[INFO ] 16:18:32.460 [main] SaveOrderAndLog - Number of items not specified
+[INFO ] 16:18:32.460 [main] SaveOrderAndLog - Your order has not been added
+[INFO ] 16:18:32.464 [main] SaveOrderAndLog - The number of items is less than zero
+[INFO ] 16:18:32.464 [main] SaveOrderAndLog - Your order has not been added
+[INFO ] 16:19:10.776 [main] SaveOrderAndLog - Your order has been successfully added
+[INFO ] 16:25:50.561 [main] SaveOrderAndLog - Your order has been successfully added
+[INFO ] 16:26:22.173 [main] SaveOrderAndLog - Your order has been successfully added
+[INFO ] 16:50:48.823 [main] SaveOrderAndLog - Your order has been successfully added
+[INFO ] 16:51:35.977 [main] SaveOrderAndLog - Your order has been successfully added
+[INFO ] 16:53:08.401 [main] SaveOrderAndLog - Your order has been successfully added
+[INFO ] 16:53:08.431 [main] SaveOrderAndLog - User with this number is not found
+[INFO ] 16:53:08.431 [main] SaveOrderAndLog - Your order has not been added
+[INFO ] 16:53:08.435 [main] SaveOrderAndLog - Your order has been successfully added
+[INFO ] 16:53:08.438 [main] SaveOrderAndLog - Item with this number is not found
+[INFO ] 16:53:08.439 [main] SaveOrderAndLog - Your order has not been added
+[INFO ] 16:53:08.442 [main] SaveOrderAndLog - Number of items not specified
+[INFO ] 16:53:08.442 [main] SaveOrderAndLog - Your order has not been added
+[INFO ] 16:53:08.445 [main] SaveOrderAndLog - The number of items is less than zero
+[INFO ] 16:53:08.445 [main] SaveOrderAndLog - Your order has not been added
+[INFO ] 16:53:20.985 [main] SaveOrderAndLog - Your order has been successfully added
+[INFO ] 16:53:21.016 [main] SaveOrderAndLog - User with this number is not found
+[INFO ] 16:53:21.016 [main] SaveOrderAndLog - Your order has not been added
+[INFO ] 16:53:21.020 [main] SaveOrderAndLog - Your order has been successfully added
+[INFO ] 16:53:21.022 [main] SaveOrderAndLog - Item with this number is not found
+[INFO ] 16:53:21.022 [main] SaveOrderAndLog - Your order has not been added
+[INFO ] 16:53:21.024 [main] SaveOrderAndLog - Number of items not specified
+[INFO ] 16:53:21.024 [main] SaveOrderAndLog - Your order has not been added
+[INFO ] 16:53:21.026 [main] SaveOrderAndLog - The number of items is less than zero
+[INFO ] 16:53:21.026 [main] SaveOrderAndLog - Your order has not been added
+[INFO ] 16:58:46.287 [main] SaveOrderAndLog - Your order has been successfully added
+[INFO ] 16:58:46.315 [main] SaveOrderAndLog - User with this number is not found
+[INFO ] 16:58:46.315 [main] SaveOrderAndLog - Your order has not been added
+[INFO ] 16:58:46.318 [main] SaveOrderAndLog - Your order has been successfully added
+[INFO ] 16:58:46.320 [main] SaveOrderAndLog - Item with this number is not found
+[INFO ] 16:58:46.320 [main] SaveOrderAndLog - Your order has not been added
+[INFO ] 16:58:46.323 [main] SaveOrderAndLog - Number of items not specified
+[INFO ] 16:58:46.323 [main] SaveOrderAndLog - Your order has not been added
+[INFO ] 16:58:46.325 [main] SaveOrderAndLog - The number of items is less than zero
+[INFO ] 16:58:46.325 [main] SaveOrderAndLog - Your order has not been added
