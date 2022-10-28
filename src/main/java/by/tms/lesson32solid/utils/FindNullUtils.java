@@ -1,5 +1,6 @@
 package by.tms.lesson32solid.utils;
 
+import lombok.extern.log4j.Log4j;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
