@@ -28,9 +28,9 @@ public final class RepositoryImplUtil {
             int line = ps.executeUpdate();
             isDelete = line > 0;
         } catch (SQLException e) {
-            logger.debug(e.getMessage());
+            log.debug(e.getMessage());
         } catch (IOException e) {
-            logger.debug(e.getMessage());
+            log.debug(e.getMessage());
         }
 
         return isDelete;

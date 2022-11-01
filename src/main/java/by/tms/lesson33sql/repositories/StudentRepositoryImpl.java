@@ -18,8 +18,6 @@ import java.sql.SQLException;
 @Slf4j
 public class StudentRepositoryImpl implements StudentRepository {
 
-    private static Logger logger = LoggerFactory.getLogger("StudentRepositoryImpl");
-
     private Path databasePropertiesFilePath;
 
     public StudentRepositoryImpl(Path databasePropertiesFilePath) {
@@ -43,9 +41,9 @@ public class StudentRepositoryImpl implements StudentRepository {
             int line = ps.executeUpdate();
             isAdd = line > 0;
         } catch (SQLException e) {
-            logger.debug(e.getMessage());
+            log.debug(e.getMessage());
         } catch (IOException e) {
-            logger.debug(e.getMessage());
+            log.debug(e.getMessage());
         }
         return isAdd;
     }

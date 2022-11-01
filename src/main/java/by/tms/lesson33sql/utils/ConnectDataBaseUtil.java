@@ -1,5 +1,6 @@
 package by.tms.lesson33sql.utils;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,9 +14,8 @@ import java.sql.SQLException;
 import java.util.Optional;
 import java.util.Properties;
 
+@Slf4j
 public final class ConnectDataBaseUtil {
-
-    private static Logger logger = LoggerFactory.getLogger("ConnectDataBaseUtil");
 
     private ConnectDataBaseUtil() {
     }

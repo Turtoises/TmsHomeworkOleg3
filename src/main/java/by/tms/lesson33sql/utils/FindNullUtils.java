@@ -10,14 +10,12 @@ import java.util.Objects;
 @Slf4j
 public class FindNullUtils {
 
-    private static Logger logger = LoggerFactory.getLogger("FindNullUtils");
-
     private FindNullUtils() {
     }
 
     public static boolean isAnyNull(Object... obj) {
         if (obj == null || Arrays.stream(obj).anyMatch(object -> object == null || object.toString().isEmpty())) {
-            logger.info("Find Null");
+            log.info("Find Null");
             return true;
         }
         return false;

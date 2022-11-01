@@ -11,13 +11,10 @@ public class ServiceCreateServices {
 
     public ServiceCityImpl serviceCityImpl;
     public ServiceStudentImpl serviceStudentImpl;
-    private CityRepository cityRepositoryIml;
-    private StudentRepository studentRepositoryImpl;
 
     public ServiceCreateServices(Path databasePropertiesFilePath) {
-        cityRepositoryIml = new CityRepositoryImpl(databasePropertiesFilePath);
-        studentRepositoryImpl = new StudentRepositoryImpl(databasePropertiesFilePath);
-        serviceCityImpl = new ServiceCityImpl(cityRepositoryIml);
-        serviceStudentImpl = new ServiceStudentImpl(cityRepositoryIml, studentRepositoryImpl);
+
+        serviceCityImpl = new ServiceCityImpl(databasePropertiesFilePath);
+        serviceStudentImpl = new ServiceStudentImpl(databasePropertiesFilePath);
     }
 }

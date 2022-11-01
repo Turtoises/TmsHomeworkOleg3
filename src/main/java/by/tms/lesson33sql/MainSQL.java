@@ -9,9 +9,11 @@ public class MainSQL {
 
         ServiceCreateServices serviceCreateServices = new ServiceCreateServices(Constants.DATABASE_PROPERTIES_FILE_PATH);
 
-        serviceCreateServices.serviceStudentImpl.add("Ivan", "Ivanov", "Grodno");
+        //serviceCreateServices.serviceStudentImpl.add("Ivan", "Ivanov", "Grodno");
 
         serviceCreateServices.serviceCityImpl.add("Baranki");
+
+        serviceCreateServices.serviceStudentImpl.delete(21);
 
     }
 }

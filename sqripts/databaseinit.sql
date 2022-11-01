@@ -28,7 +28,3 @@ values
     ('Ivan','Ivanov',1),
     ('Fedr','Petrov',2),
     ('Nocolai','Volohov',3);
-
-SELECT name,surname,city
-FROM students
-JOIN cities on students.city_id = cities.id;

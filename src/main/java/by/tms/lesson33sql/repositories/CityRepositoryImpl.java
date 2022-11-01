@@ -4,6 +4,7 @@ import by.tms.lesson33sql.entities.City;
 import by.tms.lesson33sql.utils.ConnectDataBaseUtil;
 import by.tms.lesson33sql.utils.Constants;
 import by.tms.lesson33sql.utils.RepositoryImplUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,9 +15,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+@Slf4j
 public class CityRepositoryImpl implements CityRepository {
-
-    private static Logger logger = LoggerFactory.getLogger("CityRepositoryImpl");
 
     private Path databasePropertiesFilePath;
 
@@ -37,9 +37,9 @@ public class CityRepositoryImpl implements CityRepository {
             int line = ps.executeUpdate();
             isAdd = line > 0;
         } catch (SQLException e) {
-            logger.debug(e.getMessage());
+            log.debug(e.getMessage());
         } catch (IOException e) {
-            logger.debug(e.getMessage());
+            log.debug(e.getMessage());
         }
         return isAdd;
     }
@@ -58,13 +58,13 @@ public class CityRepositoryImpl implements CityRepository {
             PreparedStatement ps = connection.prepareStatement(Constants.SELECT_CITY_STATEMENT);
             ps.setString(1, cityName);
             ResultSet rs = ps.executeQuery();
-            if(rs.next()) {
+            if (rs.next()) {
                 id = rs.getInt("id");
             }
         } catch (SQLException e) {
-            logger.debug(e.getMessage());
+            log.debug(e.getMessage());
         } catch (IOException e) {
-            logger.debug(e.getMessage());
+            log.debug(e.getMessage());
         }
         return id;
     }

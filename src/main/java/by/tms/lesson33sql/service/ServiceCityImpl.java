@@ -2,24 +2,25 @@ package by.tms.lesson33sql.service;
 
 import by.tms.lesson33sql.entities.City;
 import by.tms.lesson33sql.repositories.CityRepository;
+import by.tms.lesson33sql.repositories.CityRepositoryImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.nio.file.Path;
+
 @Slf4j
 public class ServiceCityImpl {
 
-    private static Logger logger = LoggerFactory.getLogger("ServiceCityImpl");
-
     CityRepository cityRepository;
 
-    public ServiceCityImpl(CityRepository cityRepository) {
-        this.cityRepository = cityRepository;
+    public ServiceCityImpl(Path databasePropertiesFilePath) {
+        this.cityRepository = new CityRepositoryImpl(databasePropertiesFilePath);
     }
 
     public boolean add(String nameCity) {
         if (nameCity == null || nameCity.isEmpty()) {
-            logger.info("Wrong name city");
+            log.info("Wrong name city");
             return false;
         }
         boolean isAdd = false;
@@ -27,16 +28,16 @@ public class ServiceCityImpl {
         int index = cityRepository.getID(city);
         if (index == 0) {
             isAdd = cityRepository.add(city);
-            logger.info("Add is {}", isAdd);
+            log.info("Add is {}", isAdd);
             return isAdd;
         }
-        logger.info("The city is already in the database");
+        log.info("The city is already in the database");
         return false;
     }
 
     public Integer getIDCity(String nameCity) {
         if (nameCity == null || nameCity.isEmpty()) {
-            logger.info("Wrong name city");
+            log.info("Wrong name city");
             return 0;
         }
         return cityRepository.getID(new City(0, nameCity));
@@ -44,11 +45,11 @@ public class ServiceCityImpl {
 
     public boolean delete(Integer id) {
         if (id == null || id <= 0) {
-            logger.info("Wrong id");
+            log.info("Wrong id");
             return false;
         }
         boolean isDelete = cityRepository.delete(id);
-        logger.info("Delete city {}", isDelete);
+        log.info("Delete city {}", isDelete);
 
         return isDelete;
     }
