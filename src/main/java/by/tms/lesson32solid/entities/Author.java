@@ -7,7 +7,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class Author {
 
-    private String FirstName;
-    private String LastName;
+    private String firstName;
+    private String lastName;
 
 }

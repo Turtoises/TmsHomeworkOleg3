@@ -2,6 +2,7 @@ package by.tms.lesson32solid.services;
 
 import by.tms.lesson32solid.entities.User;
 import by.tms.lesson32solid.repositories.UserRepository;
+import by.tms.lesson32solid.repositories.UserRepositoryIml;
 import by.tms.lesson32solid.utils.FindNullUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
@@ -12,12 +13,10 @@ import java.util.Objects;
 @Slf4j
 public class UserServiceIml implements UserService {
 
-    private static Logger logger = LoggerFactory.getLogger("UserServiceIml");
-
     private UserRepository userRepository;
 
-    public UserServiceIml(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserServiceIml() {
+        this.userRepository = new UserRepositoryIml();
     }
 
     @Override
@@ -34,9 +33,9 @@ public class UserServiceIml implements UserService {
             user.setPassword(newPassword);
             userRepository.add(user);
             isСhangePassword = true;
-            logger.info("Change password successful");
+            log.info("Change password successful");
         } else {
-            logger.info("Change password NOT successful");
+            log.info("Change password NOT successful");
         }
         return isСhangePassword;
     }
@@ -49,15 +48,15 @@ public class UserServiceIml implements UserService {
         }
 
         if (!userRepository.isUser(login)) {
-            logger.info("User not find");
+            log.info("User not find");
             return false;
         }
         if (Objects.equals(userRepository.findByLogin(login).getPassword(), password)) {
             userRepository.delete(login);
-            logger.info("Delete user successful");
+            log.info("Delete user successful");
             return true;
         }
-        logger.info("Delete user NOT successful");
+        log.info("Delete user NOT successful");
         return false;
     }
 
@@ -69,17 +68,17 @@ public class UserServiceIml implements UserService {
         }
 
         if (login.isEmpty() || password.isEmpty()) {
-            logger.info("Date is empty");
+            log.info("Date is empty");
             return false;
         }
 
         if (userRepository.isUser(login)) {
-            logger.info("The user already exists");
+            log.info("The user already exists");
             return false;
         }
 
         userRepository.add(new User(login, password));
-        logger.info("Creat user successful");
+        log.info("Creat user successful");
         return true;
     }
 

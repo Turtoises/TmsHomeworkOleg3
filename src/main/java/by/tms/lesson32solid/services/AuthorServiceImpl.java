@@ -2,6 +2,7 @@ package by.tms.lesson32solid.services;
 
 import by.tms.lesson32solid.entities.Author;
 import by.tms.lesson32solid.repositories.AuthorRepository;
+import by.tms.lesson32solid.repositories.AuthorRepositoryIml;
 import by.tms.lesson32solid.utils.FindNullUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
@@ -14,12 +15,10 @@ import java.util.Set;
 @Slf4j
 public class AuthorServiceImpl implements AuthorService {
 
-    private static Logger logger = LoggerFactory.getLogger("AuthorServiceImpl");
+        private AuthorRepository authorRep;
 
-    private AuthorRepository authorRep;
-
-    public AuthorServiceImpl(AuthorRepository authorRep) {
-        this.authorRep = authorRep;
+    public AuthorServiceImpl() {
+        this.authorRep = new AuthorRepositoryIml();
     }
 
     @Override
@@ -40,7 +39,7 @@ public class AuthorServiceImpl implements AuthorService {
             authorRep.add(author, new HashSet<>(Arrays.asList(book)));
             isAdd = true;
         }
-        logger.info("Add book {}", isAdd);
+        log.info("Add book {}", isAdd);
         return isAdd;
     }
 
@@ -63,7 +62,7 @@ public class AuthorServiceImpl implements AuthorService {
                 authorRep.add(author, books);
             }
         }
-        logger.info("Delete book {}", isDelete);
+        log.info("Delete book {}", isDelete);
         return isDelete;
     }
 
@@ -77,7 +76,7 @@ public class AuthorServiceImpl implements AuthorService {
 
         if (isAuthor(author)) {
             authorRep.delete(author);
-            logger.info("Delete author {}", true);
+            log.info("Delete author {}", true);
             return true;
         }
         return false;
@@ -122,7 +121,7 @@ public class AuthorServiceImpl implements AuthorService {
             books = authorRep.getBooks(author);
             return books;
         }
-        logger.info("No author found");
+        log.info("No author found");
         return books;
     }
 

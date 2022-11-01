@@ -1,19 +1,15 @@
 package by.tms.lesson32solid;
 
-import by.tms.lesson32solid.repositories.AuthorRepository;
-import by.tms.lesson32solid.repositories.AuthorRepositoryIml;
 import by.tms.lesson32solid.services.AuthorService;
 import by.tms.lesson32solid.services.AuthorServiceImpl;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestAuthorServiceImpl {
 
-    AuthorRepository authorRepository = new AuthorRepositoryIml();
-    AuthorService authorService = new AuthorServiceImpl(authorRepository);
-
+    AuthorService authorService = new AuthorServiceImpl();
 
     @ParameterizedTest
     @CsvSource(value = {
@@ -27,8 +23,7 @@ public class TestAuthorServiceImpl {
             book = null;
         }
         boolean isAdd = authorService.addBook(firstName, lastName, book);
-        assertTrue(isAdd == result);
-
+        assertEquals(isAdd, result);
     }
 
     @ParameterizedTest
@@ -42,8 +37,6 @@ public class TestAuthorServiceImpl {
             book = null;
         }
         boolean isAdd = authorService.deleteBook(firstName, lastName, book);
-        assertTrue(isAdd == result);
+        assertEquals(isAdd, result);
     }
-
-
 }
