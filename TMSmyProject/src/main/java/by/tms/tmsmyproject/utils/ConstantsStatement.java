@@ -19,4 +19,10 @@ public final class ConstantsStatement {
 
     public static final String INSERT_USER = "INSERT INTO users (login,password,role,email,name,surname) VALUES (?,?,?,?,?,?);";
 
+    //author
+
+    public static final String INSERT_AUTHOR = "INSERT INTO authors (name,surname,birth_year,death_year) VALUES (?,?,?,?);";
+
+    public static final String SELECT_AUTHOR_BY_NAME = "SELECT* FROM authors WHERE name=? AND surname=?;";
+
 }

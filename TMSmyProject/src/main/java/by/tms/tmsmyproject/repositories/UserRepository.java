@@ -4,11 +4,11 @@ import by.tms.tmsmyproject.entities.User;
 
 import java.sql.SQLException;
 
-public interface UserRepository extends AbstractRepository<User> {
+public interface UserRepository extends Repository<User> {
 
-    boolean deleteByLogin(String login);
+    boolean deleteByLogin(String login) throws SQLException;
 
-    User getByLogin(String login);
+    User getByLogin(String login) throws SQLException;
 
     boolean isUserLogin(String login) throws SQLException;
 

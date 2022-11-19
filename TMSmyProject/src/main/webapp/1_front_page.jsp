@@ -1,4 +1,4 @@
-<%--
+<%@ page import="by.tms.tmsmyproject.utils.Constants" %><%--
   Created by IntelliJ IDEA.
   User: Oleg
   Date: 05.11.2022
@@ -13,10 +13,16 @@
     <title>Books-online</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="1_page_image/booksstyle.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/1_page_image/booksstyle.css">
 </head>
 
 <body>
+
+<%
+    pageContext.setAttribute("path", Constants.URI_FRONT_CONTROLLER_SERVLET);
+    pageContext.setAttribute("command", Constants.PARAMETER_COMMAND);
+    pageContext.setAttribute("namecommand", Constants.COMMAND_Authentication);
+%>
 
 <header class="header">
     <div class="overlay"></div>
@@ -26,7 +32,7 @@
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="1_page_image/image-brand.png" alt="Book-online" id="brand">
+                <img src="${pageContext.request.contextPath}/1_page_image/image-brand.png" alt="Book-online" id="brand">
                 BOOK-online
             </a>
         </div>
@@ -62,13 +68,15 @@
             <br><br><br><br><br>
 
             <div class="card" id="card">
-                <img src="1_page_image/1_image-house.jpg" class="card-img-top" alt="...">
+                <img src="${pageContext.request.contextPath}/1_page_image/1_image-house.jpg" class="card-img-top"
+                     alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Information</h5>
                     <p class="card-text">If you want to know more about us, click here </p>
 
                     <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
-                            data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Our contacts
+                            data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Our
+                        contacts
                     </button>
 
                     <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1"
@@ -90,7 +98,9 @@
                     <br><br>
 
                     <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
-                            data-bs-target="#offcanvasWithBothOptions1" aria-controls="offcanvasWithBothOptions1">About us</button>
+                            data-bs-target="#offcanvasWithBothOptions1" aria-controls="offcanvasWithBothOptions1">About
+                        us
+                    </button>
 
                     <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1"
                          id="offcanvasWithBothOptions1" aria-labelledby="offcanvasWithBothOptionsLabel1">
@@ -99,10 +109,15 @@
                         </div>
                         <div class="offcanvas-body">
                             <p>
-                                Book-online is a book publisher based in London. We publish exciting fiction books that tackle "uncomfortable" topics: issues of self-identity, racism and sexism, attitudes toward one's own body, etc.
+                                Book-online is a book publisher based in London. We publish exciting fiction books that
+                                tackle "uncomfortable" topics: issues of self-identity, racism and sexism, attitudes
+                                toward one's own body, etc.
                                 We're looking for authors!
-                                If you have a completed novel in Russian and would like to publish it with us, send a manuscript in DOC or PDF format to editor@popcornbooks.me along with a cover letter and synopsis.
-                                If our publisher is not the first one to whom you have chosen to send your manuscript, please indicate that in your letter.
+                                If you have a completed novel in Russian and would like to publish it with us, send a
+                                manuscript in DOC or PDF format to editor@popcornbooks.me along with a cover letter and
+                                synopsis.
+                                If our publisher is not the first one to whom you have chosen to send your manuscript,
+                                please indicate that in your letter.
                             </p>
                         </div>
                     </div>
@@ -112,44 +127,55 @@
 
         <div class="col-4">
 
-            <div class="alert alert-primary text-center" role="alert" >
+            <div class="alert alert-primary text-center" role="alert">
                 Our authors
             </div>
 
             <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
                 <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="1_page_image/img-stiven-king.jpg" class="d-block w-100" alt="...">
+                        <img src="${pageContext.request.contextPath}/1_page_image/img-stiven-king.jpg"
+                             class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>Стивен Кинг</h5>
-                            <p>американский писатель, работающий в разнообразных жанрах, включая ужасы, триллер, фантастику, фэнтези, мистику, драму, детектив, получил прозвище «Король ужасов»</p>
+                            <p>американский писатель, работающий в разнообразных жанрах, включая ужасы, триллер,
+                                фантастику, фэнтези, мистику, драму, детектив, получил прозвище «Король ужасов»</p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="1_page_image/image-ray-bradbury.jpg" class="d-block w-100" alt="...">
+                        <img src="${pageContext.request.contextPath}/1_page_image/image-ray-bradbury.jpg"
+                             class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>Рэй Брэдбери</h5>
-                            <p> американский писатель, известный по антиутопии «451 градус по Фаренгейту», циклу рассказов «Марсианские хроники» и частично автобиографической повести «Вино из одуванчиков».</p>
+                            <p> американский писатель, известный по антиутопии «451 градус по Фаренгейту», циклу
+                                рассказов «Марсианские хроники» и частично автобиографической повести «Вино из
+                                одуванчиков».</p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="1_page_image/img-makkammon.jpg" class="d-block w-100" alt="...">
+                        <img src="${pageContext.request.contextPath}/1_page_image/img-makkammon.jpg"
+                             class="d-block w-100" alt="...">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>Роберт Маккаммон</h5>
                             <p> американский писатель в жанре ужасов, детективной и исторической прозы.</p>
                         </div>
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                        data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                        data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
@@ -167,21 +193,20 @@
                     Enter if you are user
                 </div>
 
-                <form>
+                <form action=${pageScope.path} method="post">
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        <label for="validationCustom03" class="form-label">Login</label>
+                        <input type="text" name="login" required class="form-control"
+                               id="validationCustom03">
+                        <div class="valid-feedback"></div>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
+                        <label for="validationCustom05" class="form-label">Password</label>
+                        <input type="password" name="password" required class="form-control"
+                               id="validationCustom05">
+                        <div class="valid-feedback"></div>
                     </div>
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary" name=${pageScope.command} value=${pageScope.namecommand}>Submit</button>
                 </form>
             </div>
             <br>
@@ -190,52 +215,7 @@
                 If you are NOT user<br>
                 ENTER
             </button>
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                 aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Registration form</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form class="row g-3">
-                                <div class="col-md-4">
-                                    <label for="validationDefault01" class="form-label">User name</label>
-                                    <input type="text" class="form-control" id="validationDefault01" required>
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="validationDefaultUsername" class="form-label">Email</label>
-                                    <div class="input-group">
-                                        <span class="input-group-text" id="inputGroupPrepend2">@</span>
-                                        <input type="text" class="form-control" id="validationDefaultUsername"
-                                               aria-describedby="inputGroupPrepend2" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="validationDefault03" class="form-label">City</label>
-                                    <input type="text" class="form-control" id="validationDefault03" required>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck2"
-                                               required>
-                                        <label class="form-check-label" for="invalidCheck2">
-                                            Agree to terms and conditions
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <button class="btn btn-primary" type="submit">Submit form</button>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
 
     </div>
@@ -254,7 +234,6 @@
         </ul>
     </nav>
 </div>
-
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"

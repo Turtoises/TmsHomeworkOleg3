@@ -4,17 +4,17 @@ import by.tms.tmsmyproject.entities.AbstractEntity;
 
 import java.util.List;
 
-public interface CrudService <E extends AbstractEntity> {
+public interface CrudService <E extends AbstractEntity,R> {
 
-    boolean deleteById(Long id);
+    R deleteById(Long id);
 
-    boolean delete(E entity);
+    R delete(E entity);
 
-    E getById(Long id);
+    R getById(Long id);
 
-    boolean create(E entity);
+    R create(E entity);
 
-    boolean update(E entity);
+    R update(E entity);
 
     List<E> getAll();
 

@@ -37,6 +37,7 @@ public class ListenerContext implements ServletContextListener {
         } else {
             servletContext.setAttribute(Constants.CONTEXT_ATTRIBUTE_IS_CONNECT, false);
         }
+
     }
 
     @Override

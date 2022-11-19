@@ -9,7 +9,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "FrontControllerServlet", value = {Constants.URI_FRONT_CONTROLLER_SERVLET, Constants.URI_FIRST_PAGE})
+@WebServlet(name = "FrontControllerServlet", value = Constants.URI_FRONT_CONTROLLER_SERVLET)
 
 public class FrontControllerServlet extends HttpServlet {
     @Override
@@ -20,26 +20,11 @@ public class FrontControllerServlet extends HttpServlet {
         command.process();
     }
 
-    private static String getNameCommand(HttpServletRequest request) {
-        String uri = request.getRequestURI();
-        String nameCommand = null;
-
-        if (uri.equals(Constants.URI_FIRST_PAGE)) {
-            nameCommand = Constants.COMMAND_OPEN_FIST_PAGE;
-        }
-
-        if (nameCommand == null) {
-            nameCommand = request.getParameter(Constants.PARAMETER_COMMAND);
-        }
-
-        return nameCommand;
-    }
-
     private FrontCommand getCommand(HttpServletRequest request) {
         try {
             Class type = Class.forName(String.format(
                     Constants.PATH_TO_ALL_COMMANDS,
-                    getNameCommand(request)));
+                    request.getParameter(Constants.PARAMETER_COMMAND)));
             return (FrontCommand) type
                     .asSubclass(FrontCommand.class)
                     .getDeclaredConstructor().newInstance();

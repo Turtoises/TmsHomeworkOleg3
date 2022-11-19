@@ -1,19 +1,8 @@
 package by.tms.tmsmyproject.repositories;
 
-import by.tms.tmsmyproject.entities.AbstractEntity;
+import java.sql.Connection;
 
-import java.util.List;
+public abstract class AbstractRepository {
 
-public interface AbstractRepository <E extends AbstractEntity> {
-
-    boolean deleteById(Long id);
-
-    E getById(Long id);
-
-    boolean create(E entity);
-
-    boolean update(E entity);
-
-    List<E> getAll();
-
+    protected Connection connection;
 }

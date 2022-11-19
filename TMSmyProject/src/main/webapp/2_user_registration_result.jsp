@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Oleg
-  Date: 12.11.2022
-  Time: 19:56
+  Date: 14.11.2022
+  Time: 15:18
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -11,21 +11,24 @@
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href=${pageContext.request.contextPath}/"3_result_config/result.css">
-    <title>Delete user by login and password result</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/3_result_config/result.css">
+    <title>Create user result</title>
 </head>
 
 <body>
 
 <div class="alert alert-info text-center" role="alert">
-    <h1>Result of <span class="badge text-bg-danger">deleting</span> a user</h1>
+    <h1>Result of <span class="badge text-bg-danger">creating</span> a user</h1>
 </div>
 <br>
 <br>
 
 <c:if test="${result.valid eq true}">
 
-    <h1>User with login ${result.user.login} is deleted</h1>
+
+    <h1>Dear ${result.user.name} ${result.user.surname}</h1><br>
+    <h1>You are registered on the site under the login <span class="text-bg-info">${result.user.login}</span></h1><br>
+    <h1>Congratulates</h1><br>
 
 </c:if>
 

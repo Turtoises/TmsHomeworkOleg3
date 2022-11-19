@@ -1,105 +1,123 @@
 package by.tms.tmsmyproject.services;
 
+import by.tms.tmsmyproject.entities.ResponseMessage;
 import by.tms.tmsmyproject.entities.User;
-import by.tms.tmsmyproject.entities.enums.RoleUser;
-import by.tms.tmsmyproject.repositories.UserRepository;
 import by.tms.tmsmyproject.repositories.UserRepositoryIml;
-import by.tms.tmsmyproject.utils.Constants;
 import by.tms.tmsmyproject.utils.ConstantsRegex;
 import by.tms.tmsmyproject.utils.FindNullAndEmptyUtil;
 import by.tms.tmsmyproject.utils.UserMapperUtil;
 import lombok.extern.slf4j.Slf4j;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
-public class UserServiceImpl extends AbstractService<User, UserRepository> {
+public class UserServiceImpl extends AbstractUserService {
 
-    public UserServiceImpl(HttpServletRequest request) {
-        this.request = request;
+    public UserServiceImpl() {
         this.repository = new UserRepositoryIml();
     }
 
     @Override
-    public boolean deleteById(Long id) {
-        HttpSession session = request.getSession();
-        if (!session.getAttribute(Constants.SESSION_ATTRIBUTE_ROLE).equals(RoleUser.ADMIN.toString())) {
-            String message = "The operation is only available with administrator rights. Deleting a user by ID is not performed";
-            request.setAttribute(Constants.ATTRIBUTE_DELETE_USER_BY_ID, message);
-            log.info(message);
-            return false;
+    public ResponseMessage deleteById(Long id) {
+        User userDelete = null;
+        try {
+            userDelete = repository.getById(id);
+        } catch (SQLException e) {
+            return new ResponseMessage(false, "SQL Exception");
         }
-        User userDelete = repository.getById(id);
+
         if (userDelete.getId() == null) {
             String message = String.format("User with ID=%d not find", id);
-            request.setAttribute(Constants.ATTRIBUTE_DELETE_USER_BY_ID, message);
             log.info(message);
-            return false;
+            return new ResponseMessage(false, message);
         }
-        request.setAttribute(Constants.ATTRIBUTE_DELETE_USER_BY_ID, UserMapperUtil.getUserLoginIdDto(userDelete));
-        return repository.deleteById(id);
+        try {
+            repository.deleteById(id);
+        } catch (SQLException e) {
+            new ResponseMessage(false, "SQL Exception");
+        }
+        return new ResponseMessage(true, UserMapperUtil.getUserLoginIdDto(userDelete));
     }
 
     @Override
-    public boolean delete(User userDto) {
-        String login = userDto.getLogin();
-        String password = userDto.getPassword();
-
-        if (FindNullAndEmptyUtil.isAnyNullOrEmpty(login, password)) {
-            String message = "Login or password is incorrect";
-            request.setAttribute(Constants.ATTRIBUTE_DELETE_USER_BY_LOGIN, message);
-            log.info(message);
-            return false;
+    public ResponseMessage delete(User userDto) {
+        try {
+            String message = getStringErrorInUserDataDelete(userDto);
+            if (!message.isEmpty()) {
+                return new ResponseMessage(false, message);
+            }
+            repository.deleteByLogin(userDto.getLogin());
+        } catch (SQLException e) {
+            return new ResponseMessage(false, "SQL Exception");
         }
-        User userDelete = repository.getByLogin(login);
-        String passwordInBase = userDelete.getPassword();
-        if (passwordInBase == null) {
-            String message = String.format("User with login %s not find", login);
-            request.setAttribute(Constants.ATTRIBUTE_DELETE_USER_BY_LOGIN, message);
-            log.info(message);
-            return false;
-        }
-        if (!password.equals(passwordInBase)) {
-            String message = String.format("The user with the login %s has a different password", login);
-            request.setAttribute(Constants.ATTRIBUTE_DELETE_USER_BY_LOGIN, message);
-            log.info(message);
-            return false;
-        }
-        return repository.deleteByLogin(login);
+        return new ResponseMessage(true, userDto);
     }
 
     @Override
-    public User getById(Long id) {
-        return null;
-    }
+    public ResponseMessage getById(Long id) {
+        if (id == null) {
+            String message = "ID is empty";
+            return new ResponseMessage(false, message);
+        }
 
-    @Override
-    public boolean create(User user) {
-        List<String> messageList = new ArrayList<>();
+        User user = new User();
 
         try {
-            messageList = errorList(user);
+            user = repository.getById(id);
         } catch (SQLException e) {
-            messageList.add("SQLException");
-            request.setAttribute(Constants.ATTRIBUTE_CREATE_USER, messageList);
-            log.info("SQLException create");
-            return false;
+            return new ResponseMessage(false, "SQL Exception");
         }
-        if (!messageList.isEmpty()) {
-            request.setAttribute(Constants.ATTRIBUTE_CREATE_USER, messageList);
-            return false;
+        if (user.getId() == null) {
+            String message = String.format("User with ID=%d not find", id);
+            return new ResponseMessage(false, message);
         }
+        return new ResponseMessage(true, user);
+    }
 
-        return repository.create(user);
+    public ResponseMessage getByLogin(String login) {
+
+        if (login == null || login.isEmpty()) {
+            String message = "login is empty";
+            return new ResponseMessage(false, message);
+        }
+        User user = new User();
+
+        try {
+            user = repository.getByLogin(login);
+        } catch (SQLException e) {
+            return new ResponseMessage(false, "SQL Exception");
+        }
+        if (user.getId() == null) {
+            String message = String.format("User with login=%d not find", login);
+            return new ResponseMessage(false, message);
+        }
+        return new ResponseMessage(true, user);
+    }
+
+    /*public User getRoleOrNull(User userDto){
+        String login = userDto.getLogin();
+        String password = userDto.getPassword();
+    }*/
+
+    @Override
+    public ResponseMessage create(User user) {
+        try {
+            List<String> listErrorInUserData = getListErrorInUserDataCreate(user);
+            if (!listErrorInUserData.isEmpty()) {
+                return new ResponseMessage(false, listErrorInUserData);
+            }
+            repository.create(user);
+        } catch (SQLException e) {
+            return new ResponseMessage(false, "SQL Exception");
+        }
+        return new ResponseMessage(true, UserMapperUtil.getUseCreateDto(user));
     }
 
     @Override
-    public boolean update(User entity) {
-        return false;
+    public ResponseMessage update(User entity) {
+        return new ResponseMessage();
     }
 
     @Override
@@ -107,13 +125,12 @@ public class UserServiceImpl extends AbstractService<User, UserRepository> {
         return null;
     }
 
-    private List<String> errorList(User user) throws SQLException {
+    private List<String> getListErrorInUserDataCreate(User user) throws SQLException {
         List<String> error = new ArrayList<>();
 
         if (FindNullAndEmptyUtil.isAnyNullOrEmpty(user.getArrayFields())) {
             String message = "There are unfilled fields";
             error.add(message);
-            log.info(message);
             return error;
         }
 
@@ -123,10 +140,10 @@ public class UserServiceImpl extends AbstractService<User, UserRepository> {
         String name = user.getName();
         String surname = user.getSurname();
 
-        if (!name.matches(ConstantsRegex.NAME)) {
+        if (!name.matches(ConstantsRegex.NAME_USER)) {
             error.add("name incorrect");
         }
-        if (!surname.matches(ConstantsRegex.NAME)) {
+        if (!surname.matches(ConstantsRegex.NAME_USER)) {
             error.add("surname incorrect");
         }
         if (!login.matches(ConstantsRegex.LOGIN)) {
@@ -147,8 +164,31 @@ public class UserServiceImpl extends AbstractService<User, UserRepository> {
         if (repository.isUserEmail(user.getEmail())) {
             error.add("This email is already taken");
         }
-
         return error;
     }
 
+    private String getStringErrorInUserDataDelete(User user) throws SQLException {
+
+        String login = user.getLogin();
+        String password = user.getPassword();
+        String message = "";
+
+        if (FindNullAndEmptyUtil.isAnyNullOrEmpty(login, password)) {
+            message = "Login or password is incorrect";
+            return message;
+        }
+        User userDelete = repository.getByLogin(login);
+
+        String passwordInBase = userDelete.getPassword();
+
+        if (passwordInBase == null) {
+            message = String.format("User with login %s not find", login);
+            return message;
+        }
+        if (!password.equals(passwordInBase)) {
+            message = String.format("The user with the login %s has a different password", login);
+            return message;
+        }
+        return message;
+    }
 }

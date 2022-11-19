@@ -15,53 +15,40 @@ import java.sql.SQLException;
 import java.util.List;
 
 @Slf4j
-public class UserRepositoryIml implements UserRepository {
-
-    private Connection connection;
+public class UserRepositoryIml extends AbstractRepository implements UserRepository {
 
     public UserRepositoryIml() {
         this.connection = ListenerContext.getConnection();
     }
 
     @Override
-    public boolean deleteById(Long id) {
+    public boolean deleteById(Long id) throws SQLException {
         int row = 0;
 
-        try {
-            PreparedStatement ps = StatementUtil.getPreparedStatement(connection, ConstantsStatement.DELETE_USER_BY_ID, id);
-            row = ps.executeUpdate();
-        } catch (SQLException e) {
-            log.debug("deleteById {}", e.getMessage());
-        }
+        PreparedStatement ps = StatementUtil.getPreparedStatement(connection, ConstantsStatement.DELETE_USER_BY_ID, id);
+        row = ps.executeUpdate();
+
         return row != 0;
     }
 
     @Override
-    public User getById(Long id) {
+    public User getById(Long id) throws SQLException {
         User user = new User();
 
-        try {
-            PreparedStatement ps = StatementUtil.getPreparedStatement(connection, ConstantsStatement.SELECT_USER_BY_ID, id);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                user = getUserFromResultSet(rs);
-            }
-        } catch (SQLException e) {
-            log.debug("getById {}", e.getMessage());
+        PreparedStatement ps = StatementUtil.getPreparedStatement(connection, ConstantsStatement.SELECT_USER_BY_ID, id);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            user = getUserFromResultSet(rs);
         }
         return user;
     }
 
     @Override
-    public boolean create(User user) {
+    public boolean create(User user) throws SQLException {
         int row = 0;
 
-        try {
-            PreparedStatement ps = StatementUtil.getPreparedStatement(connection, ConstantsStatement.INSERT_USER, user.getArrayFields());
-            row = ps.executeUpdate();
-        } catch (SQLException e) {
-            log.debug("create {}", e.getMessage());
-        }
+        PreparedStatement ps = StatementUtil.getPreparedStatement(connection, ConstantsStatement.INSERT_USER, user.getArrayFields());
+        row = ps.executeUpdate();
         return row != 0;
     }
 
@@ -76,29 +63,21 @@ public class UserRepositoryIml implements UserRepository {
     }
 
     @Override
-    public boolean deleteByLogin(String login) {
+    public boolean deleteByLogin(String login) throws SQLException {
         int row = 0;
 
-        try {
-            PreparedStatement ps = StatementUtil.getPreparedStatement(connection, ConstantsStatement.DELETE_USER_BY_LOGIN, login);
-            row = ps.executeUpdate();
-        } catch (SQLException e) {
-            log.debug("deleteById {}", e.getMessage());
-        }
+        PreparedStatement ps = StatementUtil.getPreparedStatement(connection, ConstantsStatement.DELETE_USER_BY_LOGIN, login);
+        row = ps.executeUpdate();
         return row != 0;
     }
 
     @Override
-    public User getByLogin(String login) {
+    public User getByLogin(String login) throws SQLException {
         User user = new User();
-        try {
-            PreparedStatement ps = StatementUtil.getPreparedStatement(connection, ConstantsStatement.SELECT_USER_BY_LOGIN, login);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                user = getUserFromResultSet(rs);
-            }
-        } catch (SQLException e) {
-            log.debug("getByLogin {}", e.getMessage());
+        PreparedStatement ps = StatementUtil.getPreparedStatement(connection, ConstantsStatement.SELECT_USER_BY_LOGIN, login);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            user = getUserFromResultSet(rs);
         }
         return user;
     }
