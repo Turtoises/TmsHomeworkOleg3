@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="authors"
+          class="by.tms.tmsmyproject.repositories.AuthorRepositoryIml">
+    </bean>
+
+    <bean id="authors-service"
+          class="by.tms.tmsmyproject.services.AuthorServiceImpl">
+        <constructor-arg ref="authors"/>
+    </bean>
+
+</beans>
