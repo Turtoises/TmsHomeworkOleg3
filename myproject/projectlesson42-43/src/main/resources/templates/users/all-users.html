@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All users</title>
+</head>
+<body>
+<div th:insert="~{units/bootstrap::copy}"></div>
+
+<div th:insert="~{units/navbar::copy}"></div>
+
+<br><br><br>
+
+<div th:if="${users==null or users.isEmpty()}">
+
+    <h1>Not users</h1><br>
+
+</div>
+
+<div th:if="${users!=null and !users.isEmpty()}">
+
+    <div class="container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Surname</th>
+                <th scope="col">Login</th>
+                <th scope="col">Role</th>
+                <th scope="col">Email</th>
+                <th scope="col">Edit</th>
+            </tr>
+            </thead>
+            <tbody>
+            <div th:each="user : ${users}">
+                <tr>
+                    <td th:text="${user.id}"></td>
+                    <td th:text="${user.name}"></td>
+                    <td th:text="${user.surname}"></td>
+                    <td th:text="${user.login}"></td>
+                    <td th:text="${user.role.value}"></td>
+                    <td th:text="${user.email}"></td>
+                    <td><a th:href="@{users/{id}/edit(id=${user.id})}" class="btn btn-danger" type="button"><i
+                            class="fa fa-hand-o-up" aria-hidden="true"></i> </a></td>
+                </tr>
+            </div>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+</body>
+</html>
