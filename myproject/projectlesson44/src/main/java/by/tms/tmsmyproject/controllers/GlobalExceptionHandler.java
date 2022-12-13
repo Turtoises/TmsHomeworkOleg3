@@ -1,5 +1,6 @@
 package by.tms.tmsmyproject.controllers;
 
+import by.tms.tmsmyproject.exception.FilesUploadException;
 import by.tms.tmsmyproject.exception.UserNotCreateException;
 import by.tms.tmsmyproject.exception.UserNotFoundException;
 import org.springframework.http.HttpHeaders;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import java.time.LocalDateTime;
@@ -40,6 +42,16 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(UserNotCreateException.class)
     public ResponseEntity<Object> handleUserNotCreateException(Exception ex) {
+        return new ResponseEntity<>(response(ex), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(FilesUploadException.class)
+    public ResponseEntity<Object> handleFileUploadException(Exception ex) {
+        return new ResponseEntity<>(response(ex), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(MaxUploadSizeExceededException.class)
+    public ResponseEntity<Object> handleMaxUploadSizeExceededException(Exception ex) {
         return new ResponseEntity<>(response(ex), HttpStatus.BAD_REQUEST);
     }
 
