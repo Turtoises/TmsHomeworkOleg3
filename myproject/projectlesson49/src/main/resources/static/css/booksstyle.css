@@ -1,0 +1,137 @@
+
+body {
+    background-image: url("../images/image-fone.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+#index {
+    background-image: url("../images/image-fone-index.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+#admin {
+    background-image: url("../images/image-fone-admin.png");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+#error4xx {
+    background-image: url("../images/image-fone-error4xx.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+#error5xx {
+    background-image: url("../images/image-fone-error5xx.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+#errors {
+    background-image: url("../images/image-fone-errors.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+#brand {
+    width: 60px;
+    height: 40px
+}
+
+#button{
+    position: relative;
+    margin-bottom: 20px;
+    margin-left: 5%;
+}
+
+#table {
+    background: white;
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 20px;
+}
+
+#pagin {
+    position: absolute;
+    margin-top: auto;
+    margin-left: 40%;
+    margin-right: 50%;
+    top: 0;
+    bottom: 0;
+    width: 200px;
+    height: 100px;
+}
+#alphabet{
+    height: 25px;
+    width: 50%;
+    vertical-align: middle;
+    text-align: center;
+    margin: 0;
+}
+
+.navbar {
+    background: #F97300;
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+}
+
+.nav-link, .navbar-brand {
+    color: #f4f4f4;
+    cursor: pointer;
+}
+
+.nav-link {
+    margin-right: 1em !important;
+}
+
+.author {
+    height: 590px;
+}
+
+.nav-link:hover {
+    background: #f4f4f4;
+    color: #f97300;
+}
+
+.navbar-collapse {
+    justify-content: flex-end;
+}
+
+.navbar-toggler {
+    background: #fff !important;
+}
+
+#block1 {
+    opacity: 0.7;
+}
+
+#enter {
+    padding: 7px;
+    border: 3px solid #fff;
+    border-radius: 10px;
+}
+
+#card {
+    width: 225px;
+}
+
+#footer-date {
+    position: fixed; /* Фиксированное положение */
+    left: 0;
+    bottom: 0; /* Левый нижний угол */
+    padding: 10px; /* Поля вокруг текста */
+    color: black;
+    background: blanchedalmond;
+    width: 250px;
+    height: 35px
+}
